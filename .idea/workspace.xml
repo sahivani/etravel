@@ -19,62 +19,88 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a217ef6-c325-4e07-a47d-3f90d1972fd8" name="Default Changelist" comment="Chhavi" />
+    <list default="true" id="b03a0086-c240-4c19-9335-abd08a8a5d14" name="Default Changelist" comment="Shivani-1">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1keepolcF4mHMdzZFBtcBMfFmiF" />
+  <component name="ProjectId" id="1jLaVwhKEwiFwbhKHEurWbcQbJc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\shiva\PycharmProjects\etravel" />
+      <recent name="C:\Users\shiva\PycharmProjects\etravel\Templates" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="etravel" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0a217ef6-c325-4e07-a47d-3f90d1972fd8" name="Default Changelist" comment="" />
-      <created>1606065669770</created>
+      <changelist id="b03a0086-c240-4c19-9335-abd08a8a5d14" name="Default Changelist" comment="" />
+      <created>1603585852788</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1606065669770</updated>
+      <updated>1603585852788</updated>
     </task>
-    <task id="LOCAL-00001" summary="Chhavi">
-      <created>1606067080152</created>
+    <task id="LOCAL-00001" summary="Shivani-1">
+      <created>1606049252725</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1606067080152</updated>
+      <updated>1606049252725</updated>
     </task>
-    <task id="LOCAL-00002" summary="Chhavi">
-      <created>1606067486113</created>
+    <task id="LOCAL-00002" summary="Shivani-1">
+      <created>1606050533157</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1606067486113</updated>
+      <updated>1606050533157</updated>
     </task>
-    <task id="LOCAL-00003" summary="Chhavi">
-      <created>1606067644710</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1606067644710</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Chhavi">
-      <created>1606070981347</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1606070981347</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -87,23 +113,60 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Chhavi" />
-    <option name="LAST_COMMIT_MESSAGE" value="Chhavi" />
+    <option name="MAXIMUM_HISTORY_ROWS" value="1020" />
+    <MESSAGE value="Shivani-1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Shivani-1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="420" y="95" key="FileChooserDialogImpl" timestamp="1606065798840">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="912" y="217" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606047149444">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="420" y="95" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1606065798840" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1606066085447">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="912" y="217" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1606047149444" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1606062030694">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1606066085447" />
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2" timestamp="1606071056609">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606062030694" />
+    <state x="647" y="310" key="Github.ShareDialog" timestamp="1603585957734">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="233" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1606071056608" />
+    <state x="647" y="310" key="Github.ShareDialog/0.0.1536.824@0.0.1536.824" timestamp="1603585957734" />
+    <state x="573" y="117" key="Github.UntrackedFilesDialog" timestamp="1603585969260">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="573" y="117" key="Github.UntrackedFilesDialog/0.0.1536.824@0.0.1536.824" timestamp="1603585969260" />
+    <state x="580" y="115" key="RollbackChangesDialog" timestamp="1606070054267">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="580" y="115" key="RollbackChangesDialog/0.0.1536.824@0.0.1536.824" timestamp="1606070054267" />
+    <state x="277" y="57" key="SettingsEditor" timestamp="1606069822351">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606069822351" />
+    <state x="722" y="148" key="Vcs.Push.Dialog.v2" timestamp="1606050538271">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="722" y="148" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1606050538271" />
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606072725268">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1606072725268" />
+    <state x="815" y="145" key="search.everywhere.popup" timestamp="1606046520852">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="815" y="145" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1606046520852" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
