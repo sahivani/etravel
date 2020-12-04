@@ -1,0 +1,80 @@
+-{% extends "base.html" %}
+{% load cart_template_tags %}
+{% block content %}
+
+
+  <!-- Main layout -->
+  <main>
+    <section class="container">
+
+      <!--Section: Block Content-->
+      <section>
+
+        <!-- Grid row -->
+
+
+  <h2 >Wishlist</h2>
+
+<br>
+        {% for wishlist_item in object.all %}
+
+       <div class="jumbotron d-flex align-items-center" style="padding: 20px 0px" >
+          <div class="col-8 ">
+          <ul class="list-unstyled">
+            <li class="media">
+              <img class="d-flex mr-3" src="{{ wishlist_item.item.image.url }}" alt="Generic placeholder image" style="width:100px">
+              <div class="media-body">
+                <h5 class="mt-0 mb-1 font-weight-bold">{{ wishlist_item.item.title }}</h5>
+                <h6 class="mb-3">Rs.{{ wishlist_item.item.price }}</h6>
+                <h6 class="mb-3">{{ wishlist_item.item.slug|wishlist_product_count }}</h6></div></li></ul></div>
+
+            <div class="col-4 ">
+                <a href="{{ wishlist_item.item.get_add_to_cart_url }}" class="btn btn-primary btn-md my-0 p"  >
+              Add to cart
+                  <i class="fas fa-shopping-cart ml-1"></i>
+                </a>
+                <a href="{{ wishlist_item.item.get_remove_from_wishlist_url }}" class="btn btn-danger btn-md my-0 p">
+                  <i class="far fa-trash-alt"></i>
+                </a>
+
+            </div>
+
+</div>
+
+
+
+
+
+          <!-- Grid column -->
+
+<!--          <div class="col-md-4 mb-5">-->
+
+
+            <!-- Card -->
+
+          {% empty %}
+              <div class="table-responsive text-nowrap">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td colspan='5'>Your Wishlist is empty</td>
+                  </tr>
+                  <tr>
+                      <td colspan="5">
+                        <a class='btn btn-primary float-right' href='/'>Continue shopping</a>
+                      </td>
+                  </tr>
+                </tbody>
+               </table>
+              </div>
+          {% endfor %}
+
+
+      </section>
+    </section>
+
+
+  </main>
+
+{% endblock content %}
+

@@ -1,0 +1,320 @@
+-{% extends "base.html" %}
+{% load cart_template_tags %}
+{% block content %}
+
+
+  <!-- Main layout -->
+  <main>
+    <section class="container">
+
+      <!--Section: Block Content-->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+              aria-selected="false">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+              aria-selected="true">Orders</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+            <div>
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Qty</th>
+                    <th scope="col">Order Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for Order in object %}
+                {% for items in Order.items.all %}
+                  <tr>
+                    <td>{{ iterator|add:'1' }}</td>
+                    <td>{{ items.item.title }}</td>
+                    <td>{{ items.quantity }}</td>
+                    <td>{{ Order.ordered_date|date:'d-m-Y h:i A' }}</td>
+                  </tr>
+
+                {% endfor %}
+
+                {% endfor %}
+
+
+
+
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+          <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+<section id="cards" class="text-center">
+
+            <div class="container">
+            <div class="row justify-content-md-center">
+              <br>
+              <br>
+            <div class="col-8">
+              <br>
+                <!-- Card -->
+                <div class="card card-cascade">
+
+                  <!-- Card image -->
+                  <div class="view view-cascade gradient-card-header tempting-azure-gradient">
+
+                    <!-- Title -->
+                    <br>
+                    <h2 class="card-header-title mb-3">Hello, <strong class="text-propercase">{{ user.get_username|title }}</strong>
+                    </h2>
+                    <!-- Subtitle -->
+<!--                    <p class="card-header-subtitle mb-0">Deserve for her own card</p>-->
+
+                  </div>
+
+                  <!-- Card content -->
+                  <div class="card-body card-body-cascade text-center">
+
+                    <!-- Text -->
+                      <div class="container">
+                        <div class="row">
+                          <dt class="col-sm">User Name</dt>
+                          <dd class="col-sm">{{user|title}}</dd></div>
+                    <hr>
+                                            <div class="row">
+                          <dt class="col-sm">First Name</dt>
+                          <dd class="col-sm">{{user.first_name|title}}</dd></div>
+                               <hr>
+                                                <div class="row">
+                          <dt class="col-sm">Last Name</dt>
+                          <dd class="col-sm">{{user.last_name|title}}</dd></div>
+
+                    <hr>
+                    <!-- Edit -->
+                    <a class="px-2 fa-lg email-ic" data-toggle="modal" data-target="#modalDefaultContactForm"><i class="fa fa-pencil-alt"> </i></a>
+
+                  </div>
+              </div>
+                </div>
+                <!-- Card -->
+                </div>
+              </div>
+              </div>
+</section>
+
+            <div class="modal fade" id="modalDefaultContactForm" tabindex="-1" role="dialog"
+              aria-labelledby="myModalLabel" aria-hidden="true">
+              <!--Modal: Contact form-->
+              <div class="modal-dialog cascading-modal" role="document">
+
+                <!--Content-->
+                <div class="modal-content">
+
+                  <!--Header-->
+                  <div class="modal-header info-color white-text">
+                    <h4 class="title">
+                      Edit Profile</h4>
+                    <button type="button" class="close waves-effect waves-light" data-dismiss="modal"
+                      aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <!--Body-->
+                  <div class="modal-body">
+                  <form action="/edituser/" method="POST">{% csrf_token %}
+                    <!-- Default input name -->
+                    <label for="defaultFormNameModalEx">User Name</label>
+                    <input type="text" id="defaultFormNameModalEx" name ="uname" class="form-control form-control-sm" value="{{user|title}}">
+
+                    <br>
+
+                    <!-- Default input email -->
+                    <label for="defaultFormEmailModalEx">First Name</label>
+                    <input type="text" id="defaultFormEmailModalEx" name ="fname" class="form-control form-control-sm" value="{{user.first_name|title}}">
+
+                    <br>
+
+                    <!-- Default input subject -->
+                    <label for="defaultFormSubjectModalEx">Last Name</label>
+                    <input type="text" id="defaultFormSubjectModalEx" name ="lname" class="form-control form-control-sm" value="{{user.last_name|title}}">
+
+                    <br>
+
+                    <!-- Default textarea message -->
+
+                    <div class="text-center mt-4 mb-2">
+                      <button type="submit" class="btn btn-info">Submit
+                        <i class="fa fa-send ml-2"></i>
+                      </button>
+                    </div>
+</form>
+                  </div>
+                </div>
+                <!--/.Content-->
+              </div>
+              <!--/Modal: Contact form-->
+
+            </div>
+
+<section id="address" class="text-center">
+
+            <div class="container">
+            <div class="row justify-content-md-center">
+              <br>
+              <br>
+            <div class="col-8">
+              <br>
+                <!-- Card -->
+                <div class="card card-cascade">
+
+                  <!-- Card image -->
+                  <div class="view view-cascade gradient-card-header peach-gradient">
+
+                    <!-- Title -->
+                    <br>
+                    <h4 class="card-header-title mb-3"><strong class="text-propercase">Shipping Address</strong>
+                    </h4>
+                    <!-- Subtitle -->
+<!--                    <p class="card-header-subtitle mb-0">Deserve for her own card</p>-->
+
+                  </div>
+
+                  <!-- Card content -->
+                  <div class="card-body card-body-cascade text-left">
+
+                    <!-- Text -->
+                      <div class="container">{% for address in addresses %}
+                        <div class="row">
+                          <div class="col-12 col-sm-6 col-lg-8">
+                              {% if address.street_address|length > 0 %}
+                                <b>Street Address:</b> {{ address.street_address }}<br>
+                            {% else %}
+
+                            {% endif %}
+
+                            {% if address.apartment_address|length > 0 %}
+                                <b>Apartment or Suite:</b> {{ address.apartment_address }}<br>
+                            {% else %}
+
+                            {% endif %}
+
+                          {% if address.country|length > 0 %}
+                            <b>Country:</b> {{ address.country }}<br>
+                        {% else %}
+
+                        {% endif %}
+
+                              {% if address.zip|length > 0 %}
+                                <b>Zip Code:</b> {{ address.zip }}<br>
+                            {% else %}
+                                None
+                            {% endif %}
+
+      </div>
+
+                            <div class="col-md-1"><br><div class="text-left"><a class="px-2 fa-lg email-ic" title="Edit" data-toggle="modal" data-target="#addressForm{{address.id}}"><i class="fa fa-pencil-alt"> </i></a>
+                                </div> </div>
+                             <div class="col-md-1"><br><div class="text-right"><a style='color: red;' href="{% url 'core:remove-address' address.id %}">
+                <i class="fas fa-trash" data-toggle="tooltip" data-placement="top"
+  title="Delete"></i>
+            </a></p></div>
+
+                        </div>
+                        </div>
+
+                    <hr>
+                    <!-- Edit -->
+{% endfor %}
+
+                  </div>
+              </div>
+                </div>
+                <!-- Card -->
+                </div>
+              </div>
+              </div>
+</section>
+{% for address in addresses %}
+            <div class="modal fade" id="addressForm{{address.id}}" tabindex="-1" role="dialog"
+              aria-labelledby="myModalLabel" aria-hidden="true">
+              <!--Modal: Contact form-->
+              <div class="modal-dialog cascading-modal" role="document">
+
+                <!--Content-->
+                <div class="modal-content">
+
+                  <!--Header-->
+                  <div class="modal-header info-color white-text">
+                    <h4 class="title">
+                      Edit Address</h4>
+                    <button type="button" class="close waves-effect waves-light" data-dismiss="modal"
+                      aria-label="Close">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                  </div>
+                  <!--Body-->
+                  <div class="modal-body">
+          <form action="{% url 'core:editaddress' address.id %}" method="POST">{% csrf_token %}
+                    <!-- Default input name -->
+                    <label for="a{{address.id}}">Street Address</label>
+                    <input type="text" id="a{{address.id}}" name ="st" class="form-control form-control-sm" value="{{address.street_address}}">
+
+                    <br>
+
+                    <!-- Default input email -->
+                    <label for="b{{address.id}}">Apartment or Suite</label>
+                    <input type="text" id="b{{address.id}}" name ="ap" class="form-control form-control-sm" value="{{address.apartment_address}}">
+
+                    <br>
+
+                    <!-- Default input subject -->
+                       <div class="row">
+                          <div class="col-12 col-sm-6 col-lg-8">
+                            <label for="country">Country</label>
+                            {{ form.country }}
+                            <div class="invalid-feedback">
+                              Please select a valid country.
+                            </div>
+                          </div>
+
+                          <div class="col-lg-4 col-md-6 mb-4">
+                            <label for="shipping_zip">Zip</label>
+                            <input type='text' placeholder='Zip code' id='shipping_zip' name='shipping_zip' value="{{address.zip}}" class='form-control' />
+                            <div class="invalid-feedback">
+                              Zip code required.
+                            </div>
+                          </div>
+                        </div>
+
+                    <br>
+
+                    <!-- Default textarea message -->
+
+                    <div class="text-center mt-4 mb-2">
+                      <button type="submit" class="btn btn-info">Submit
+                        <i class="fa fa-send ml-2"></i>
+                      </button>
+                    </div>
+</form>
+                  </div>
+                </div>
+                <!--/.Content-->
+              </div>
+              <!--/Modal: Contact form-->
+
+            </div>{% endfor %}
+          </div>
+        </div>
+ </section>
+
+
+
+  </main>
+
+{% endblock content %}
+
