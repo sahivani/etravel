@@ -1,0 +1,273 @@
+{% extends "base.html" %}
+{% load cart_template_tags %}
+{% block content %}
+<style>
+
+.star-rating {
+  font-size: 0;
+  white-space: nowrap;
+  display: inline-block;
+  /* width: 250px; */ /* remove this */
+  height: 20px;
+  overflow: hidden;
+  position: relative;
+  background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjREREREREIiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
+  background-size: contain;
+}
+.star-rating i {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  /* width: 20%; remove this */
+  z-index: 1;
+  background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjRkZERjg4IiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
+  background-size: contain;
+}
+.star-rating input {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  opacity: 0;
+  display: inline-block;
+  /* width: 20%; remove this */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+  position: relative;
+}
+.star-rating input:hover + i,
+.star-rating input:checked + i {
+  opacity: 1;
+}
+.star-rating i ~ i {
+  width: 40%;
+}
+.star-rating i ~ i ~ i {
+  width: 60%;
+}
+.star-rating i ~ i ~ i ~ i {
+  width: 80%;
+}
+.star-rating i ~ i ~ i ~ i ~ i {
+  width: 100%;
+}
+::after,
+::before {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.star-rating.star-5 {width: 100px;}
+.star-rating.star-5 input,
+.star-rating.star-5 i {width: 20%;}
+.star-rating.star-5 i ~ i {width: 40%;}
+.star-rating.star-5 i ~ i ~ i {width: 60%;}
+.star-rating.star-5 i ~ i ~ i ~ i {width: 80%;}
+.star-rating.star-5 i ~ i ~ i ~ i ~i {width: 100%;}
+
+.star-rating.star-3 {width: 150px;}
+.star-rating.star-3 input,
+.star-rating.star-3 i {width: 33.33%;}
+.star-rating.star-3 i ~ i {width: 66.66%;}
+.star-rating.star-3 i ~ i ~ i {width: 100%;}
+
+</style>
+<main class="mt-5 pt-4">
+    <div class="container dark-grey-text mt-5">
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <img src="{{ item.image.url }}" class="img-fluid" alt="">
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Content-->
+          <div class="p-4">
+
+            <div class="mb-3">
+              <h3>
+                  <strong>
+                {{ item.title }}</span></strong></h3>
+
+<!--<span class="badge purple mr-1">-->
+            </div>
+
+            <p class="lead">
+              {% if item.discount_price %}
+              <span class="mr-1">
+                <del>Rs.{{ item.price|floatformat:"0"  }}</del>
+              </span>
+              <span>Rs.{{ item.discount_price|floatformat:"0"  }}</span>
+              {% else %}
+              <span>Rs.{{ item.price|floatformat:"0"  }}</span>
+              {% endif %}
+            </p>
+            {% if item.slug|review_avg == 0 %}
+                <strong><span class="grey-text">No Reviews & Rating</span></strong></h5>
+            {% elif item.slug|review_avg <= 1 %}
+                <h5><span class="badge badge-danger">{{ item.slug|review_avg }} ★</span><strong><span class="grey-text" style="font-size: 0.8em">  {{ item.slug|review_count }} Reviews</span></strong></h5>
+            {% elif item.slug|review_avg < 3 %}
+                <h5><span class="badge badge-warning">{{ item.slug|review_avg }} ★</span><strong><span class="grey-text" style="font-size: 0.8em">  {{ item.slug|review_count }} Reviews</span></strong></h5>
+            {% else %}
+                <h5><span class="badge badge-success">{{ item.slug|review_avg }} ★</span><strong><span class="grey-text" style="font-size: 0.8em">  {{ item.slug|review_count }} Reviews</span></strong></h5>
+            {% endif %}
+
+            <p><br><strong class="green-text">In Stock</strong></p><br>
+            {% comment %} <form class="d-flex justify-content-left">
+              <!-- Default input -->
+              <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
+              <button class="btn btn-primary btn-md my-0 p" type="submit">
+                Add to cart
+                <i class="fas fa-shopping-cart ml-1"></i>
+              </button>
+
+            </form> {% endcomment %}
+            <a href="{{ item.get_add_to_cart_url }}" class="btn btn-primary btn-md my-0 p">
+              Add to cart
+              <i class="fas fa-shopping-cart ml-1"></i>
+            </a>
+            <a href="{{ item.get_add_to_wishlist_url }}" class="btn btn-danger btn-md my-0 p">
+              Add to wishlist
+              <i class="fas fa-heart ml-1"></i>
+            </a>
+
+          </div>
+          <!--Content-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+
+
+
+      <!--Grid row-->
+
+<!-- Classic tabs -->
+<div class="classic-tabs border rounded px-0 pt-0">
+
+  <ul class="nav nav-tabs nav-justified" id="advancedTab" role="tablist" >
+    <li class="nav-item">
+      <a class="nav-link active show" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">Reviews</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Add a review</a>
+    </li>
+  </ul>
+  <div class="container">
+  <div class="tab-content" id="advancedTabContent">
+    <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+      <br>
+      <h5>Product Description :</h5>
+      <p class="pt-2" style="text-indent: 50px">{{ item.description }}</p>
+    </div>
+    <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+<br>
+
+<h5><span>{{ item.slug|review_count }}</span> review for <span>{{ item.title }}</span></h5>
+       {% for comment in comments %}
+      <div class="media mt-3 mb-4">
+        <div class="media-body">
+          <div class="d-sm-flex justify-content-between">
+            <p class="mt-1 mb-2">
+              <strong>{{ comment.user|title }} </strong>
+              <span>– </span><span>{{ comment.create_at|date:'d F Y' }}</span>
+            </p></div>
+              <div class="review-rating">
+              <i class="fas fa-star fa-sm text-primary{% if comment.rate < 1 %}-o empty{% endif %}"></i>
+              <i class="fas fa-star fa-sm text-primary{% if comment.rate < 2 %}-o empty{% endif %}"></i>
+              <i class="fas fa-star fa-sm text-primary{% if comment.rate < 3 %}-o empty{% endif %}"></i>
+              <i class="fas fa-star fa-sm text-primary{% if comment.rate < 4 %}-o empty{% endif %}"></i>
+              <i class="fas fa-star fa-sm text-primary{% if comment.rate < 5 %}-o empty{% endif %}"></i>
+              </div>
+          <p class="mb-0"> <strong>{{ comment.subject|title }} </strong></p>
+          <p class="mb-0">{{ comment.comment|title }}</p>
+          </div>
+        </div>
+      <hr>
+          {% endfor %}
+      </div>
+
+    <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+{% if request.user|disable_count:item.slug == 1 %}
+       <br><p>You already added a Review!</p>
+      {% else %}
+
+
+      <h5 class="mt-4">Add a review</h5>
+      <p> </p>
+      <form action="{% url 'core:addcomment' id=item.id %}" method="POST">{% csrf_token %}
+          <div class="form-group"><strong class="text-uppercase">Your Rating: </strong><br>
+            <span class="star-rating star-5">
+              <input type="radio" name="rate" value="1"><i></i>
+              <input type="radio" name="rate" value="2"><i></i>
+              <input type="radio" name="rate" value="3"><i></i>
+              <input type="radio" name="rate" value="4"><i></i>
+              <input type="radio" name="rate" value="5"><i></i>
+            </span>
+         </div>
+        <div class="md-form md-outline">
+          <input name="subject" class="form-control pr-6" type="text" placeholder="Subject" />
+        </div>
+        <!-- Your review -->
+        <div class="md-form md-outline">
+            <textarea name="comment" class="md-textarea form-control pr-6" placeholder="Review" rows="4"></textarea>
+        </div>
+        <div class="text-right pb-2">
+        {% if user.id is not None %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+        {% else %}
+        You must be logged in to post a review
+        {% endif %}</div>
+        </form>
+{% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- Classic tabs -->
+</div>
+
+
+</main>
+
+<script>
+
+$("a[href=#info]").on('click', function()
+{
+   window.scrollTo(0,document.body.scrollHeight);
+});
+
+$("a[href=#reviews]").on('click', function()
+{
+   window.scrollTo(0,document.body.scrollHeight);
+})
+
+;</script>
+
+
+
+
+
+{% endblock content %}
