@@ -7,120 +7,117 @@
 
 <!-- jQuery UI !-->
 
-<style>
-  img {
-    width: 300px; /* Home image dimension */
-    height: 300px;
-    object-fit: contain;
-}
-</style>
   <main>
     <div class="container">
 
-      <!--Navbar-->
-      <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
-
-        <!-- Navbar brand -->
-        <span class="navbar-brand">Categories:</span>
-
-        <!-- Collapse button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Collapsible content -->
-        <div class="collapse navbar-collapse" id="basicExampleNav">
-
-          <!-- Links -->
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/">All
-                <span class="sr-only">(current)</span>
-              </a>
-             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-male"></i> Men </a>
-            <div class="dropdown-menu dropdown-menu-lg-left dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-              <a class="dropdown-item" href="{% url 'core:HomeView-category' category='S' gender='M' %}">Shirts</a>
-              <a class="dropdown-item" href="{% url 'core:HomeView-category' category='SW' gender='M'%}">Sport wears</a>
-              <a class="dropdown-item" href="{% url 'core:HomeView-category' category='J' gender='M'%}">Jeans</a>
-          </div>
-          </li>
-
-             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-5" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-female"></i> Women </a>
-            <div class="dropdown-menu dropdown-menu-lg-left dropdown-info" aria-labelledby="navbarDropdownMenuLink-5">
-              <a class="dropdown-item" href="{% url 'core:HomeView-category' category='T' gender='F'%}">Tops</a>
-              <a class="dropdown-item" href="{% url 'core:HomeView-category' category='D' gender='F'%}">Dresses</a>
-              <a class="dropdown-item" href="{% url 'core:HomeView-category' category='J' gender='F'%}">Jeans</a>
-          </div>
-          </li>
-
-          </ul>
-          <!-- Search Bar -->
-
-          <form class="form-inline" action="/search/" method="POST">
-            {% csrf_token %}
-            <div class="md-form my-0">
-              <input class="form-control mr-sm-2"  id="query" name="query" type="search" placeholder="Search" aria-label="Search">
-            </div>
-          </form>
-        </div>
-        <!-- Collapsible content -->
-
-      </nav>
       <!--/.Navbar-->
-
-      <!--Section: Products v.3-->
-      <section class="text-center mb-4">
+<!--Carousel Wrapper-->
+<div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+  <!--Indicators-->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-2" data-slide-to="1"></li>
+    <li data-target="#carousel-example-2" data-slide-to="2"></li>
+  </ol>
+  <!--/.Indicators-->
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <div class="view">
+        <img class="d-block w-150" src="https://mdbootstrap.com/img/Photos/Slides/img%20(15).jpg"
+          alt="First slide">
+        <div class="mask rgba-black-slight"></div>
+      </div>
+      <div class="carousel-caption">
+        <h3 class="h3-responsive">Escapcasita</h3>
+        <p>Find Your Escape!</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <!--Mask color-->
+      <div class="view">
+        <img class="d-block w-150" src="https://mdbootstrap.com/img/Photos/Slides/img%20(17).jpg"
+          alt="Second slide">
+        <div class="mask rgba-black-strong"></div>
+      </div>
+      <div class="carousel-caption">
+        <h3 class="h3-responsive">Book Your Stay with us</h3>
+        <p>Experience the Best Luxurious Comfort!</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <!--Mask color-->
+      <div class="view">
+        <img class="d-block w-150" src="https://mdbootstrap.com/img/Photos/Slides/img%20(18).jpg"
+          alt="Third slide">
+        <div class="mask rgba-black-light"></div>
+      </div>
+      <div class="carousel-caption">
+        <h3 class="h3-responsive">Explore the World</h3>
+        <p>Indulge Your Senses!</p>
+      </div>
+    </div>
+  </div>
+  <!--/.Slides-->
+  <!--Controls-->
+  <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+  <!--/.Controls-->
+</div>
+<!--/.Carousel Wrapper-->
+      <br>
+ <!--Section: Products v.3-->
+      <section>
 
         <div class="row wow fadeIn">
-
-          {% for item in object_list %}
+{% for item in object_list %}
           <div class="col-lg-3 col-md-6 mb-4">
+<!-- Card -->
+<div class="card">
+
+  <!-- Card image -->
+  <div class="view overlay">
+    <img class="card-img-top" src="{{ item.image.url }}">
+    <a>
+      <div class="mask rgba-white-slight"></div>
+    </a>
+  </div>
+
+  <!-- Card content -->
+  <div class="card-body">
+
+    <!-- Title -->
+    <h6 class="card-title">{{ item.title }}</h6>
+    <strong> <p class="bq-title">Rs.{{ item.price|floatformat:"0" }} / Night</p> </strong>
+    <hr>
+    <!-- Text -->
+    <p class="card-text">Description</p>
+
+  </div>
+
+  <!-- Card footer -->
+  <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
+    <ul class="list-unstyled list-inline font-small">
+      <li class="list-inline-item pr-2 white-text"><i class="fas fa-hotel"></i>{{ item.get_category_display }}</li>
+      <li class="list-inline-item pr-2"><a href="#" class="white-text"><i
+            class="far fa-comments pr-1"></i>0</a></li>
+    </ul>
+  </div>
+
+</div>
+<!-- Card -->
 
 
-            <div class="card">
-
-              <div class="view overlay">
-                <img src="{{ item.image.url }}" class="card-img-top" >
-                <a href="{{ item.get_absolute_url }}">
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-
-              <div class="card-body text-center">
-                <a href="{{ item.get_absolute_url }}" class="grey-text">
-                  <h5>{{ item.get_category_display }}</h5>
-                </a>
-                <h5>
-                  <strong>
-                    <a href="{{ item.get_absolute_url }}" class="dark-grey-text">{{ item.title }}
-<!--                      <span class="badge badge-pill {{ item.get_label_display }}-color">{{ item.get_label_display }}</span>-->
-                    </a>
-                  </strong>
-                </h5>
-
-                <h4 class="font-weight-bold blue-text">
-                  <strong>Rs.
-                  {% if item.discount_price %}
-                  {{ item.discount_price|floatformat:"0"  }}
-                  {% else %}
-                  {{ item.price|floatformat:"0" }}
-                  {% endif %}
-                  </strong>
-                </h4>
-
-              </div>
-
-            </div>
 
           </div>
           {% endfor %}
+<!-- Card -->
         </div>
 
       </section>
@@ -163,6 +160,7 @@
   </main>
 
 {% endblock content %}
+
 
 {% block extra_scripts %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>

@@ -9,11 +9,9 @@ from django.utils import timezone
 
 
 CATEGORY_CHOICES = (
-    ('S', 'Shirt'),
-    ('SW', 'Sport wear'),
-    ('J', 'Jeans'),
-    ('T', 'Tops'),
-    ('D', 'Dresses'),
+    ('3', '3 Star Hotel'),
+    ('4', '4 Star Hotel'),
+    ('5', '5 Star Hotel'),
 )
 
 LABEL_CHOICES = (
@@ -54,8 +52,8 @@ class Item(models.Model):
     discount_price = models.FloatField(blank=True, null=True)
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=2)
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
-    gender = models.CharField(choices=Gender_CHOICES, max_length=1,blank=True, null=True)
     slug = models.SlugField()
+    wifi = models.BooleanField(default=True)
     description = models.TextField()
     image = models.ImageField()
 

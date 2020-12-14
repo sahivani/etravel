@@ -1,9 +1,10 @@
 {% load cart_template_tags %}
+{% load static %}
 <!--Navbar -->
 
 <nav class="mb-1 navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
       <div class="container">
-    <a class="navbar-brand" href="/"><strong class="blue-text">Hamari Dukaan</strong></a>
+    <a class="navbar-brand" href="/"><img src="{% static 'img/1.jpg' %}" width="100"/></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
       aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -13,17 +14,17 @@
       <ul class="navbar-nav ml-auto">
         {% if request.user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'core:order-summary' %}">
+          <a class="nav-link" href="">
             <span class="badge red z-depth-1 mr-1"> {{ request.user|cart_item_count }} </span>
-            <i class="fas fa-shopping-cart"></i> Cart</a>
+            <i class="fas fa-plane-departure"></i>Upcoming Trips</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-user"></i> Hi {{ user.get_username|title }}! </a>
           <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-            <a class="dropdown-item" href="{% url 'core:wishlist-summary' %}">Wishlist</a>
-            <a class="dropdown-item" href="{% url 'core:order-history' %}">My account</a>
+            <a class="dropdown-item" href="">Wishlist</a>
+            <a class="dropdown-item" href="">My account</a>
             <a class="dropdown-item" href="{% url 'account_logout' %}">Log out</a>
           </div>
         </li>
