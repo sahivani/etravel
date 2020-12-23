@@ -18,7 +18,7 @@ from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm, CommentFor
 from django.db.models import Q
 from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, Wishlist, Comment
 from django.contrib.auth.models import User
-stripe.api_key = settings.STRIPE_SECRET_KEY
+
 
 
 
