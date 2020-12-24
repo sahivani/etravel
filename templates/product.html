@@ -278,6 +278,7 @@ $(function() {
   $('input[name="daterange"]').daterangepicker({
      "minDate": moment(),
       "endDate": moment().add(1, 'days'),
+    "autoApply": true,
       locale: { format: 'DD/MM/YYYY'},
     opens: 'left'
   }, function(start, end, label) {
@@ -286,14 +287,7 @@ $(function() {
 });
 
 </script>
- <script type="text/javascript">
 
-  jQuery(function() {
-    jQuery('#dateranger').close(function() {
-        this.form.submit();
-    });
-});
-</script>
 {% endblock extra_scripts %}
 
 

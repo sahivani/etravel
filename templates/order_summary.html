@@ -22,7 +22,7 @@
         {% for order_item in object.items.all %}
         <tr>
             <th>{{ order_item.item.title }}</th>
-            <th>{{ order_item.item.price }}</th>
+            <th>Rs.{{ order_item.item.price|floatformat:"0" }}</th>
             <th style="width: 224px;">{{ order_item.start_date|date:'d-m-Y' }} to {{ order_item.end_date|date:'d-m-Y' }}</th>
             <th>{{ order_item.days }}</th>
             {% if order_item.guest > 1 %}
@@ -37,14 +37,14 @@
                 <a href="{% url 'core:add-guest' order_item.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
             </td>
             {% endif %}
-            <td>
+            <th>
             {% if order_item.item.discount_price %}
-                ${{ order_item.get_total_discount_item_price }}
+                Rs.{{ order_item.get_total_discount_item_price }}
                 <span class="badge badge-primary">Saving ${{ order_item.get_amount_saved }}</span>
             {% else %}
-                ${{ order_item.get_final_price }}
+                 <strong>Rs.{{ order_item.get_final_price|floatformat:"0" }}</strong>
             {% endif %}
-</td>
+</th>
 
         </tr>
         {% empty %}
@@ -57,14 +57,14 @@
             </td>
         </tr>
         {% endfor %}
-
+        {% for order_item in object.items.all %}
         <tr>
             <td colspan="5">
             <a class='btn btn-warning float-right ml-2' href='/payment/'>Book</a>
-            <a class='btn btn-primary float-right' href='/'>Cancel</a>
+            <a class='btn btn-primary float-right' href='{{ order_item.item.get_absolute_url }}'>Go Back</a>
             </td>
         </tr>
-
+     {% endfor %}
         </tbody>
     </table>
 
