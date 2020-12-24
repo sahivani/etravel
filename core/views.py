@@ -2,6 +2,8 @@ import random
 import string
 import itertools
 import functools
+from datetime import datetime
+
 import stripe
 from django.conf import settings
 from django.contrib import messages
@@ -14,11 +16,12 @@ from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from django.views.generic import ListView, DetailView, View
 import json
-from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm, CommentForm, SearchForm, AddressForm
+from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm, CommentForm, SearchForm, AddressForm, \
+    DateRangeForm
 from django.db.models import Q
 from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, Wishlist, Comment
 from django.contrib.auth.models import User
-
+from django.utils.dateparse import parse_date
 
 
 
@@ -98,6 +101,22 @@ def editaddress(request,id):
         usr.save()
     return HttpResponseRedirect(url)
 
+
+
+def datechange(request):
+   url = request.META.get('HTTP_REFERER')  # get last url
+   order = OrderItem.objects.get(user=request.user, ordered=False)
+   if request.method == 'POST':  # check post
+    date = request.POST['daterange'].split("-")
+    first_name = date[0].strip()
+    last_name = date[1].strip()
+    order.start_date=datetime.strptime(first_name, "%d/%m/%Y").strftime("%Y-%m-%d")
+    order.end_date = datetime.strptime(last_name, "%d/%m/%Y").strftime("%Y-%m-%d")
+    order.save()  # save data to table
+    messages.success(request, "Your review has ben sent. Thank you for your interest.")
+    return HttpResponseRedirect(url)
+
+    return HttpResponseRedirect(url)
 
 def addcomment(request, id):
    url = request.META.get('HTTP_REFERER')  # get last url
@@ -544,21 +563,21 @@ def add_to_cart(request, slug):
         order = order_qs[0]
         # check if the order item is in the order
         if order.items.filter(item__slug=item.slug).exists():
-            order_item.quantity += 1
+            order_item.guest += 1
             order_item.save()
-            messages.info(request, "This item quantity was updated.")
             return redirect("core:order-summary")
         else:
             order.items.add(order_item)
-            messages.info(request, "This item was added to your cart.")
+
             return redirect("core:order-summary")
     else:
         ordered_date = timezone.now()
         order = Order.objects.create(
             user=request.user, ordered_date=ordered_date)
         order.items.add(order_item)
-        messages.info(request, "This item was added to your cart.")
         return redirect("core:order-summary")
+
+
 
 @login_required
 def move_to_wishlist(request, slug):
@@ -638,8 +657,8 @@ def remove_single_item_from_cart(request, slug):
                 user=request.user,
                 ordered=False
             )[0]
-            if order_item.quantity > 1:
-                order_item.quantity -= 1
+            if order_item.guest > 1:
+                order_item.guest -= 1
                 order_item.save()
             else:
                 order.items.remove(order_item)
