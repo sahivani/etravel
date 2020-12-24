@@ -98,6 +98,10 @@ class Item(models.Model):
         })
 
 
+    def get_add_guest_url(self):
+        return reverse("core:add-guest", kwargs={
+            'slug': self.slug
+        })
 
 
 class OrderItem(models.Model):

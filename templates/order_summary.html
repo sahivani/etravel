@@ -12,7 +12,8 @@
 
             <th scope="col">Hotel Name</th>
             <th scope="col">Price</th>
-            <th scope="col">Date</th>
+            <th scope="col">Staying Date</th>
+            <th scope="col"># Days</th>
             <th scope="col"># of Guest</th>
             <th scope="col">Total Item Price</th>
         </tr>
@@ -21,26 +22,19 @@
         {% for order_item in object.items.all %}
         <tr>
             <th>{{ order_item.item.title }}</th>
-            <td>{{ order_item.item.price }}</td>
-            <td style="width: 224px;">
-           <form class="form-inline" action="/datepick/" method="POST">
-            {% csrf_token %}
-            <div class="md-form my-0">
-              <input type="text" id="dateranger" name="daterange" value="" style="width: 170px;" />
-            </div>
-          </form>
-
-            </td>
+            <th>{{ order_item.item.price }}</th>
+            <th style="width: 224px;">{{ order_item.start_date|date:'d-m-Y' }} to {{ order_item.end_date|date:'d-m-Y' }}</th>
+            <th>{{ order_item.days }}</th>
             {% if order_item.guest > 1 %}
             <td>
                 <a href="{% url 'core:remove-single-item-from-cart' order_item.item.slug %}"><i class="fas fa-minus mr-2"></i></a>
                 {{ order_item.guest }}
-                <a href="{% url 'core:add-to-cart' order_item.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
+                <a href="{% url 'core:add-guest' order_item.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
             </td>
             {% else %}
             <td>
                 {{ order_item.guest }}
-                <a href="{% url 'core:add-to-cart' order_item.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
+                <a href="{% url 'core:add-guest' order_item.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
             </td>
             {% endif %}
             <td>
@@ -95,6 +89,7 @@ $(function() {
   $('input[name="daterange"]').daterangepicker({
      "minDate": moment(),
       "endDate": moment().add(1, 'days'),
+      "autoApply": true,
       locale: { format: 'DD/MM/YYYY'},
     opens: 'left'
   }, function(start, end, label) {
@@ -103,12 +98,5 @@ $(function() {
 });
 
 </script>
- <script type="text/javascript">
 
-  jQuery(function() {
-    jQuery('#dateranger').change(function() {
-        this.form.submit();
-    });
-});
-</script>
 {% endblock extra_scripts %}

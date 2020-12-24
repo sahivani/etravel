@@ -14,7 +14,7 @@ from .views import (
     remove_from_wishlist,
     WishlistView,
     order_history, addcomment, move_to_wishlist, HomeView_Search, HomeView_Category, search_auto, edituser,
-    remove_address, editaddress, datechange
+    remove_address, editaddress,  add_guest
 )
 
 app_name = 'core'
@@ -40,7 +40,7 @@ urlpatterns = [
     path('order-history/', order_history.as_view(), name='order-history'),
     path('addcomment/<int:id>', addcomment, name='addcomment'),
     path('search/', HomeView_Search, name='HomeView-Search'),
-    path('datepick/', datechange, name='datechange'),
+    path('add-guest/<slug>/', add_guest, name='add-guest'),
     path('search_auto/', search_auto, name='search_auto'),
     path('search/<str:city>', HomeView_Category, name='HomeView-category'),
     path('edituser/', edituser, name='edituser'),
