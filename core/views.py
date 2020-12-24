@@ -419,7 +419,7 @@ class PaymentView(View):
     #             order_items.update(ordered=True)
     #             for item in order_items:
     #                 item.save()
-    #
+
     #             order.ordered = True
     #             order.payment = payment
     #             order.ref_code = create_ref_code()
