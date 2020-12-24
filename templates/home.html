@@ -142,18 +142,15 @@
     <!-- Title -->
     <h6 class="card-title" href="{{ item.get_absolute_url }}">{{ item.title }}</h6>
     <strong> <p class="bq-title">Rs.{{ item.price|floatformat:"0" }} / Night</p> </strong>
-    <hr>
     <!-- Text -->
-    <p class="card-text">Description</p>
+
 
   </div>
 
   <!-- Card footer -->
   <div class="rounded-bottom mdb-color lighten-3 text-center pt-3">
     <ul class="list-unstyled list-inline font-small">
-      <li class="list-inline-item pr-2 white-text"><i class="fas fa-hotel"></i>{{ item.get_category_display }}</li>
-      <li class="list-inline-item pr-2"><a href="#" class="white-text"><i
-            class="far fa-comments pr-1"></i>0</a></li>
+      <li class="list-inline-item pr-2 white-text"><i class="fas fa-hotel"></i>{{ item.get_category_display }} - {{ item.get_city_display }}</li>
     </ul>
   </div>
 
