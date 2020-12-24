@@ -25,25 +25,25 @@
             <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Hotel Name</th>
-                    <th scope="col"># of Guest</th>
-                    <th scope="col">Booking Date</th>
+
+            <th scope="col">Hotel Name</th>
+            <th scope="col">Staying Date</th>
+            <th scope="col"># Days</th>
+            <th scope="col"># of Guest</th>
                   </tr>
                 </thead>
                 <tbody>
-                {% for Order in object %}
-                {% for items in Order.items.all %}
+                {% for order_item in object.items.all %}
                   <tr>
-                    <td>{{ iterator|add:'1' }}</td>
-                    <td>{{ items.item.title }}</td>
-                    <td>{{ items.quantity }}</td>
-                    <td>{{ Order.ordered_date|date:'d-m-Y h:i A' }}</td>
+                    <td>{{ order_item.item.title }}</td>
+                    <td>{{ order_item.start_date|date:'d-m-Y' }} to {{ order_item.end_date|date:'d-m-Y' }}</td>
+                    <td>{{ order_item.days }}</td>
+                    <td>{{ order_item.guest }}</td>
                   </tr>
 
                 {% endfor %}
 
-                {% endfor %}
+
 
 
 

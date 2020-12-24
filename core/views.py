@@ -131,22 +131,14 @@ def addcomment(request, id):
 
 class order_history(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
-        model = Item
         try:
-            order = Order.objects.filter(user=self.request.user, ordered=True)
-            addresses = Address.objects.filter(user=self.request.user,address_type="S")
-
-            form = AddressForm()
+            order = Order.objects.get(user=self.request.user, ordered=True)
             context = {
-                'form': form,
-                'object': order,
-                'model': model,
-                'addresses': addresses,
-                'iterator': functools.partial(next, itertools.count())
+                'object': order
             }
             return render(self.request, 'order_history.html', context)
         except ObjectDoesNotExist:
-            messages.warning(self.request, "You do not have any item on Wishlist")
+            messages.warning(self.request, "No Upcoming Trip")
             return redirect("/")
 
 
