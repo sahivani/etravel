@@ -54,11 +54,11 @@ def HomeView_Search(request):
 
         return HttpResponseRedirect('/')
 
-def HomeView_Category(request,category,gender):
-    items = Item.objects.filter(category=category,gender=gender)
+def HomeView_Category(request,city):
+    items = Item.objects.filter(city=city)
     c_d = items[0]
 
-    context = {'items': items, 'category':category, 'c_d': c_d
+    context = {'items': items, 'city':city, 'c_d': c_d
                }
     return render(request, 'home_category.html', context)
 

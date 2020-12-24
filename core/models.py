@@ -25,9 +25,12 @@ ADDRESS_CHOICES = (
     ('S', 'Shipping'),
 )
 
-Gender_CHOICES = (
-    ('M', 'Men'),
-    ('F', 'Women')
+CITY_CHOICES = (
+    ('M', 'Mumbai'),
+    ('D', 'Delhi'),
+    ('C', 'Chennai'),
+    ('H', 'Hyderabad'),
+    ('B', 'Bangalore')
 )
 
 
@@ -52,6 +55,7 @@ class Item(models.Model):
     discount_price = models.FloatField(blank=True, null=True)
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=2)
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
+    city = models.CharField(choices=CITY_CHOICES, max_length=1, default="D")
     slug = models.SlugField()
     wifi = models.BooleanField(default=True)
     description = models.TextField()
@@ -101,6 +105,8 @@ class OrderItem(models.Model):
                              on_delete=models.CASCADE)
     ordered = models.BooleanField(default=False)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
+    start_date=models.DateField(null=True)
+    end_date = models.DateField(null=True)
     quantity = models.IntegerField(default=1)
 
     def __str__(self):

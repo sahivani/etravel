@@ -72,6 +72,53 @@
 </div>
 <!--/.Carousel Wrapper-->
       <br>
+      <br>
+       <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
+
+        <!-- Navbar brand -->
+        <span class="navbar-brand">Filter:</span>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+          <!-- Links -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">All
+                <span class="sr-only">(current)</span>
+              </a>
+             <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-male"></i> City </a>
+            <div class="dropdown-menu dropdown-menu-lg-left dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+              <a class="dropdown-item" href="{% url 'core:HomeView-category' city='D'  %}">Delhi</a>
+              <a class="dropdown-item" href="{% url 'core:HomeView-category' city='M' %}">Mumbai</a>
+              <a class="dropdown-item" href="{% url 'core:HomeView-category' city='H' %}">Hyderabad</a>
+              <a class="dropdown-item" href="{% url 'core:HomeView-category' city='C' %}">Chennai</a>
+              <a class="dropdown-item" href="{% url 'core:HomeView-category' city='B' %}">Bangalore</a>
+          </div>
+
+          </ul>
+          <!-- Search Bar -->
+
+          <form class="form-inline" action="/search/" method="POST">
+            {% csrf_token %}
+            <div class="md-form my-0">
+              <input class="form-control mr-sm-2"  id="query" name="query" type="search" placeholder="Search" aria-label="Search">
+            </div>
+          </form>
+        </div>
+        <!-- Collapsible content -->
+
+      </nav>
+      <!--/.Navbar-->
  <!--Section: Products v.3-->
       <section>
 
@@ -84,7 +131,7 @@
   <!-- Card image -->
   <div class="view overlay">
     <img class="card-img-top" src="{{ item.image.url }}">
-    <a>
+    <a href="{{ item.get_absolute_url }}">
       <div class="mask rgba-white-slight"></div>
     </a>
   </div>
@@ -93,7 +140,7 @@
   <div class="card-body">
 
     <!-- Title -->
-    <h6 class="card-title">{{ item.title }}</h6>
+    <h6 class="card-title" href="{{ item.get_absolute_url }}">{{ item.title }}</h6>
     <strong> <p class="bq-title">Rs.{{ item.price|floatformat:"0" }} / Night</p> </strong>
     <hr>
     <!-- Text -->
