@@ -332,7 +332,7 @@ class PaymentView(View):
         order.ordered = True
         order.save()
 
-        messages.success(self.request, "Your order was successful!")
+        messages.success(self.request, "Your Booking was successful!")
         return redirect("/")
 
     # def get(self, *args, **kwargs):
