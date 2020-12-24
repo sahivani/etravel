@@ -332,22 +332,12 @@ class CheckoutView(View):
 class PaymentView(View):
     def get(self, *args, **kwargs):
         order = Order.objects.get(user=self.request.user, ordered=False)
-        # create the payment
-        payment = Payment()
-        payment.user = self.request.user
-        payment.amount = order.get_total()
-        payment.save()
-
         # assign the payment to the order
-
         order_items = order.items.all()
         order_items.update(ordered=True)
         for item in order_items:
             item.save()
-
         order.ordered = True
-        order.payment = payment
-        order.ref_code = create_ref_code()
         order.save()
 
         messages.success(self.request, "Your order was successful!")
