@@ -6,7 +6,7 @@ from django.forms import ModelForm
 from django.shortcuts import reverse
 from django_countries.fields import CountryField
 from django.utils import timezone
-
+import datetime
 
 CATEGORY_CHOICES = (
     ('3', '3 Star Hotel'),
@@ -25,9 +25,12 @@ ADDRESS_CHOICES = (
     ('S', 'Shipping'),
 )
 
-Gender_CHOICES = (
-    ('M', 'Men'),
-    ('F', 'Women')
+CITY_CHOICES = (
+    ('M', 'Mumbai'),
+    ('D', 'Delhi'),
+    ('C', 'Chennai'),
+    ('H', 'Hyderabad'),
+    ('B', 'Bangalore')
 )
 
 
@@ -52,6 +55,7 @@ class Item(models.Model):
     discount_price = models.FloatField(blank=True, null=True)
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=2)
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
+    city = models.CharField(choices=CITY_CHOICES, max_length=1, default="D")
     slug = models.SlugField()
     wifi = models.BooleanField(default=True)
     description = models.TextField()
@@ -94,6 +98,10 @@ class Item(models.Model):
         })
 
 
+    def get_add_guest_url(self):
+        return reverse("core:add-guest", kwargs={
+            'slug': self.slug
+        })
 
 
 class OrderItem(models.Model):
@@ -101,24 +109,27 @@ class OrderItem(models.Model):
                              on_delete=models.CASCADE)
     ordered = models.BooleanField(default=False)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1)
+    start_date=models.DateField(blank= True,null=True)
+    end_date = models.DateField(blank= True,null=True)
+    days = models.IntegerField(default=1)
+    guest = models.IntegerField(default=1)
+
+
 
     def __str__(self):
-        return f"{self.quantity} of {self.item.title}"
+        return f"{self.days} of {self.item.title}"
 
     def get_total_item_price(self):
-        return self.quantity * self.item.price
+        return self.days * self.item.price
 
     def get_total_discount_item_price(self):
-        return self.quantity * self.item.discount_price
+        return (self.guest-1) * 500
 
     def get_amount_saved(self):
         return self.get_total_item_price() - self.get_total_discount_item_price()
 
     def get_final_price(self):
-        if self.item.discount_price:
-            return self.get_total_discount_item_price()
-        return self.get_total_item_price()
+        return self.get_total_item_price() + self.get_total_discount_item_price()
 
 
 class Order(models.Model):

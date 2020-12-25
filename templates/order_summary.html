@@ -9,41 +9,42 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Item title</th>
+
+            <th scope="col">Hotel Name</th>
             <th scope="col">Price</th>
-            <th scope="col">Quantity</th>
+            <th scope="col">Staying Date</th>
+            <th scope="col"># Days</th>
+            <th scope="col"># of Guest</th>
             <th scope="col">Total Item Price</th>
         </tr>
         </thead>
         <tbody>
         {% for order_item in object.items.all %}
         <tr>
-            <th scope="row">{{ forloop.counter }}</th>
-            <td>{{ order_item.item.title }}</td>
-            <td>{{ order_item.item.price }}</td>
+            <th>{{ order_item.item.title }}</th>
+            <th>Rs.{{ order_item.item.price|floatformat:"0" }}</th>
+            <th style="width: 224px;">{{ order_item.start_date|date:'d-m-Y' }} to {{ order_item.end_date|date:'d-m-Y' }}</th>
+            <th>{{ order_item.days }}</th>
+            {% if order_item.guest > 1 %}
             <td>
                 <a href="{% url 'core:remove-single-item-from-cart' order_item.item.slug %}"><i class="fas fa-minus mr-2"></i></a>
-                {{ order_item.quantity }}
-                <a href="{% url 'core:add-to-cart' order_item.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
+                {{ order_item.guest }}
+                <a href="{% url 'core:add-guest' order_item.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
             </td>
+            {% else %}
             <td>
+                {{ order_item.guest }}
+                <a href="{% url 'core:add-guest' order_item.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
+            </td>
+            {% endif %}
+            <th>
             {% if order_item.item.discount_price %}
-                ${{ order_item.get_total_discount_item_price }}
+                Rs.{{ order_item.get_total_discount_item_price }}
                 <span class="badge badge-primary">Saving ${{ order_item.get_amount_saved }}</span>
             {% else %}
-                ${{ order_item.get_total_item_price }}
+                 <strong>Rs.{{ order_item.get_final_price|floatformat:"0" }}</strong>
             {% endif %}
-</td>
-<td>
-                    <a style='color: red;' href="{% url 'core:remove-from-cart' order_item.item.slug %}">
-                <i class="fas fa-trash float-right" data-toggle="tooltip" data-placement="top"
-  title="Delete"></i>
-            </a>
-    <a style='color: green;' href="{% url 'core:move-to-wishlist' order_item.item.slug %}" data-toggle="tooltip" data-placement="top"
-  title="Move to Wishlist" >
-                    <i class="fas fa-people-carry" ></i>
-                </a></td>
+</th>
 
         </tr>
         {% empty %}
@@ -56,24 +57,14 @@
             </td>
         </tr>
         {% endfor %}
-        {% if object.coupon %}
-        <tr>
-            <td colspan="4"><b>Coupon</b></td>
-            <td><b>-${{ object.coupon.amount }}</b></td>
-        </tr>
-        {% endif %}
-        {% if object.get_total %}
-        <tr>
-            <td colspan="4"><b>Order Total</b></td>
-            <td><b>${{ object.get_total }}</b></td>
-        </tr>
+        {% for order_item in object.items.all %}
         <tr>
             <td colspan="5">
-            <a class='btn btn-warning float-right ml-2' href='/checkout/'>Proceed to checkout</a>
-            <a class='btn btn-primary float-right' href='/'>Continue shopping</a>
+            <a class='btn btn-warning float-right ml-2' href='/payment/'>Book</a>
+            <a class='btn btn-primary float-right' href='{{ order_item.item.get_absolute_url }}'>Go Back</a>
             </td>
         </tr>
-        {% endif %}
+     {% endfor %}
         </tbody>
     </table>
 
@@ -88,4 +79,24 @@ $(function () {
 
 {% endblock content %}
 
+{% block extra_scripts %}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<script>
+$(function() {
+  $('input[name="daterange"]').daterangepicker({
+     "minDate": moment(),
+      "endDate": moment().add(1, 'days'),
+      "autoApply": true,
+      locale: { format: 'DD/MM/YYYY'},
+    opens: 'left'
+  }, function(start, end, label) {
+    console.log("A new date selection was made: " + start.format('DD-MM-YYYY') + ' to ' + end.format('DD-MM-YYYY'));
+  });
+});
 
+</script>
+
+{% endblock extra_scripts %}

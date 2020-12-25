@@ -14,7 +14,7 @@ from .views import (
     remove_from_wishlist,
     WishlistView,
     order_history, addcomment, move_to_wishlist, HomeView_Search, HomeView_Category, search_auto, edituser,
-    remove_address, editaddress
+    remove_address, editaddress,  add_guest
 )
 
 app_name = 'core'
@@ -31,7 +31,7 @@ urlpatterns = [
     path('add-coupon/', AddCouponView.as_view(), name='add-coupon'),
     path('remove-from-cart/<slug>/', remove_from_cart, name='remove-from-cart'),
     path('remove-item-from-cart/<slug>/', remove_single_item_from_cart, name='remove-single-item-from-cart'),
-    path('payment/<payment_option>/', PaymentView.as_view(), name='payment'),
+    path('payment/', PaymentView.as_view(), name='payment'),
     path('request-refund/', RequestRefundView.as_view(), name='request-refund'),
     path('add-to-wishlist/<slug>/', add_to_wishlist, name='add-to-wishlist'),
     path('move-to-wishlist/<slug>/', move_to_wishlist, name='move-to-wishlist'),
@@ -40,8 +40,9 @@ urlpatterns = [
     path('order-history/', order_history.as_view(), name='order-history'),
     path('addcomment/<int:id>', addcomment, name='addcomment'),
     path('search/', HomeView_Search, name='HomeView-Search'),
+    path('add-guest/<slug>/', add_guest, name='add-guest'),
     path('search_auto/', search_auto, name='search_auto'),
-    path('search/<str:category>/<str:gender>', HomeView_Category, name='HomeView-category'),
+    path('search/<str:city>', HomeView_Category, name='HomeView-category'),
     path('edituser/', edituser, name='edituser'),
     path('editaddress/<id>', editaddress, name='editaddress'),
     path('remove-address/<id>/', remove_address, name='remove-address')

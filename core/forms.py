@@ -73,3 +73,6 @@ class CommentForm(forms.Form):
 
 class SearchForm(forms.Form):
     query = forms.CharField(required=True)
+
+class DateRangeForm(forms.Form):
+    daterange = forms.CharField(required=True)

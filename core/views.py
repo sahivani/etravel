@@ -2,6 +2,8 @@ import random
 import string
 import itertools
 import functools
+from datetime import datetime
+
 import stripe
 from django.conf import settings
 from django.contrib import messages
@@ -14,11 +16,13 @@ from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from django.views.generic import ListView, DetailView, View
 import json
-from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm, CommentForm, SearchForm, AddressForm
+from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm, CommentForm, SearchForm, AddressForm, \
+    DateRangeForm
 from django.db.models import Q
 from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, Wishlist, Comment
 from django.contrib.auth.models import User
-stripe.api_key = settings.STRIPE_SECRET_KEY
+from django.utils.dateparse import parse_date
+from datetime import date
 
 
 
@@ -54,11 +58,11 @@ def HomeView_Search(request):
 
         return HttpResponseRedirect('/')
 
-def HomeView_Category(request,category,gender):
-    items = Item.objects.filter(category=category,gender=gender)
+def HomeView_Category(request,city):
+    items = Item.objects.filter(city=city)
     c_d = items[0]
 
-    context = {'items': items, 'category':category, 'c_d': c_d
+    context = {'items': items, 'city':city, 'c_d': c_d
                }
     return render(request, 'home_category.html', context)
 
@@ -99,6 +103,8 @@ def editaddress(request,id):
     return HttpResponseRedirect(url)
 
 
+
+
 def addcomment(request, id):
    url = request.META.get('HTTP_REFERER')  # get last url
    #return HttpResponse(url)
@@ -125,22 +131,14 @@ def addcomment(request, id):
 
 class order_history(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
-        model = Item
         try:
-            order = Order.objects.filter(user=self.request.user, ordered=True)
-            addresses = Address.objects.filter(user=self.request.user,address_type="S")
-
-            form = AddressForm()
+            order = Order.objects.get(user=self.request.user, ordered=True)
             context = {
-                'form': form,
-                'object': order,
-                'model': model,
-                'addresses': addresses,
-                'iterator': functools.partial(next, itertools.count())
+                'object': order
             }
             return render(self.request, 'order_history.html', context)
         except ObjectDoesNotExist:
-            messages.warning(self.request, "You do not have any item on Wishlist")
+            messages.warning(self.request, "No Upcoming Trip")
             return redirect("/")
 
 
@@ -326,25 +324,15 @@ class CheckoutView(View):
 class PaymentView(View):
     def get(self, *args, **kwargs):
         order = Order.objects.get(user=self.request.user, ordered=False)
-        # create the payment
-        payment = Payment()
-        payment.user = self.request.user
-        payment.amount = order.get_total()
-        payment.save()
-
         # assign the payment to the order
-
         order_items = order.items.all()
         order_items.update(ordered=True)
         for item in order_items:
             item.save()
-
         order.ordered = True
-        order.payment = payment
-        order.ref_code = create_ref_code()
         order.save()
 
-        messages.success(self.request, "Your order was successful!")
+        messages.success(self.request, "Your Booking was successful!")
         return redirect("/")
 
     # def get(self, *args, **kwargs):
@@ -431,7 +419,7 @@ class PaymentView(View):
     #             order_items.update(ordered=True)
     #             for item in order_items:
     #                 item.save()
-    #
+
     #             order.ordered = True
     #             order.payment = payment
     #             order.ref_code = create_ref_code()
@@ -534,22 +522,28 @@ def ItemDetailView(request,slug):
 @login_required
 def add_to_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
+    order_qs = OrderItem.objects.filter(user=request.user, ordered=False)
+    order_qs.all().delete()
+    order_qs = Order.objects.filter(user=request.user, ordered=False)
+    order_qs.all().delete()
     order_item, created = OrderItem.objects.get_or_create(
         item=item,
         user=request.user,
         ordered=False
     )
+
     order_qs = Order.objects.filter(user=request.user, ordered=False)
     if order_qs.exists():
         order = order_qs[0]
         # check if the order item is in the order
         if order.items.filter(item__slug=item.slug).exists():
-            order_item.quantity += 1
+            order_item.guest += 1
             order_item.save()
             messages.info(request, "This item quantity was updated.")
             return redirect("core:order-summary")
         else:
             order.items.add(order_item)
+
             messages.info(request, "This item was added to your cart.")
             return redirect("core:order-summary")
     else:
@@ -557,8 +551,20 @@ def add_to_cart(request, slug):
         order = Order.objects.create(
             user=request.user, ordered_date=ordered_date)
         order.items.add(order_item)
-        messages.info(request, "This item was added to your cart.")
+        order = OrderItem.objects.get(user=request.user, ordered=False)
+        if request.method == 'POST':  # check post
+            dates = request.POST['daterange'].split("-")
+            first_name = dates[0].strip()
+            last_name = dates[1].strip()
+            a = parse_date(datetime.strptime(first_name, "%d/%m/%Y").strftime("%Y-%m-%d"))
+            b = parse_date(datetime.strptime(last_name, "%d/%m/%Y").strftime("%Y-%m-%d"))
+            c = b - a
+            order.start_date = datetime.strptime(first_name, "%d/%m/%Y").strftime("%Y-%m-%d")
+            order.end_date = datetime.strptime(last_name, "%d/%m/%Y").strftime("%Y-%m-%d")
+            order.days = c.days
+            order.save()
         return redirect("core:order-summary")
+
 
 @login_required
 def move_to_wishlist(request, slug):
@@ -621,6 +627,22 @@ def remove_from_cart(request, slug):
         messages.info(request, "You do not have an active order")
         return redirect("core:product", slug=slug)
 
+@login_required
+def add_guest(request, slug):
+    item = get_object_or_404(Item, slug=slug)
+    order_qs = Order.objects.filter(user=request.user, ordered=False)
+    order_item, created = OrderItem.objects.get_or_create(
+        item=item,
+        user=request.user,
+        ordered=False
+    )
+    if order_qs.exists():
+        order = order_qs[0]
+        # check if the order item is in the order
+        if order.items.filter(item__slug=item.slug).exists():
+            order_item.guest += 1
+            order_item.save()
+            return redirect("core:order-summary")
 
 @login_required
 def remove_single_item_from_cart(request, slug):
@@ -638,15 +660,15 @@ def remove_single_item_from_cart(request, slug):
                 user=request.user,
                 ordered=False
             )[0]
-            if order_item.quantity > 1:
-                order_item.quantity -= 1
+            if order_item.guest > 1:
+                order_item.guest -= 1
                 order_item.save()
             else:
                 order.items.remove(order_item)
-            messages.info(request, "This item quantity was updated.")
+
             return redirect("core:order-summary")
         else:
-            messages.info(request, "This item was not in your cart")
+
             return redirect("core:product", slug=slug)
     else:
         messages.info(request, "You do not have an active order")

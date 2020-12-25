@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% load cart_template_tags %}
 {% block content %}
+
+
+
 <style>
 
 .star-rating {
@@ -103,6 +106,9 @@
                   <strong>
                 {{ item.title }}</span></strong></h3>
 
+
+
+
 <!--<span class="badge purple mr-1">-->
             </div>
 
@@ -113,7 +119,7 @@
               </span>
               <span>Rs.{{ item.discount_price|floatformat:"0"  }}</span>
               {% else %}
-              <span>Rs.{{ item.price|floatformat:"0"  }}</span>
+              <span>Rs.{{ item.price|floatformat:"0"  }} / Night</span>
               {% endif %}
             </p>
             {% if item.slug|review_avg == 0 %}
@@ -126,22 +132,19 @@
                 <h5><span class="badge badge-success">{{ item.slug|review_avg }} ★</span><strong><span class="grey-text" style="font-size: 0.8em">  {{ item.slug|review_count }} Reviews</span></strong></h5>
             {% endif %}
 
-            <p><br><strong class="green-text">In Stock</strong></p><br>
-            {% comment %} <form class="d-flex justify-content-left">
-              <!-- Default input -->
-              <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
-              <button class="btn btn-primary btn-md my-0 p" type="submit">
-                Add to cart
-                <i class="fas fa-shopping-cart ml-1"></i>
-              </button>
+            <p><br><strong class="green-text">Rooms Available</strong></p>
 
-            </form> {% endcomment %}
-            <a href="{{ item.get_add_to_cart_url }}" class="btn btn-primary btn-md my-0 p">
-              Add to cart
-              <i class="fas fa-shopping-cart ml-1"></i>
-            </a>
+          <p><br><strong>Select Dates</strong></p>
+                <form class="form-inline" action="{{ item.get_add_to_cart_url }}" method="POST" >
+            {% csrf_token %}
+            <div class="md-form my-0" >
+              <input type="text" id="dateranger" name="daterange" value="" style="width: 190px;" />
+            </div><br>
+            <button class="btn btn-primary btn-md my-0 p" type="submit" class="btn btn-primary">Submit</button>
+          </form>
+            <br>
             <a href="{{ item.get_add_to_wishlist_url }}" class="btn btn-danger btn-md my-0 p">
-              Add to wishlist
+              Add to Favorite
               <i class="fas fa-heart ml-1"></i>
             </a>
 
@@ -177,7 +180,7 @@
   <div class="tab-content" id="advancedTabContent">
     <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
       <br>
-      <h5>Product Description :</h5>
+      <h5>Hotel Description :</h5>
       <p class="pt-2" style="text-indent: 50px">{{ item.description }}</p>
     </div>
     <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
@@ -252,8 +255,12 @@
 
 </main>
 
+{% block extra_scripts %}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <script>
-
 $("a[href=#info]").on('click', function()
 {
    window.scrollTo(0,document.body.scrollHeight);
@@ -264,8 +271,24 @@ $("a[href=#reviews]").on('click', function()
    window.scrollTo(0,document.body.scrollHeight);
 })
 
-;</script>
+;
+</script>
+<script>
+$(function() {
+  $('input[name="daterange"]').daterangepicker({
+     "minDate": moment(),
+      "endDate": moment().add(1, 'days'),
+    "autoApply": true,
+      locale: { format: 'DD/MM/YYYY'},
+    opens: 'left'
+  }, function(start, end, label) {
+    console.log("A new date selection was made: " + start.format('DD-MM-YYYY') + ' to ' + end.format('DD-MM-YYYY'));
+  });
+});
 
+</script>
+
+{% endblock extra_scripts %}
 
 
 
