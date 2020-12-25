@@ -1,0 +1,93 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"BranchesTreeState\">\r\n    <expand>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </expand>\r\n    <select />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"0a217ef6-c325-4e07-a47d-3f90d1972fd8\" name=\"Default Changelist\" comment=\"Chhavi\">\r\n      <change beforePath=\"$PROJECT_DIR$/.gitignore\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gitignore\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/about.html\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/book.html\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/contact.html\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/css/bootstrap.css\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/css/css_slider.css\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/css/font-awesome.min.css\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/css/single.css\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/css/style.css\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/fonts/FontAwesome.otf\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/fonts/fontawesome-webfont.eot\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/fonts/fontawesome-webfont.svg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/fonts/fontawesome-webfont.ttf\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/fonts/fontawesome-webfont.woff\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/fonts/fontawesome-webfont.woff2\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/gallery.html\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/1.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/2.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/3.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/4.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/bg2.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/bg3.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/bg4.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/blog1.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/blog2.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/blog3.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/move-top.png\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/price1.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/price2.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/price3.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/single.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/t1.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/t2.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/t3.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/t4.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/te1.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/te2.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/te3.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/wh1.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/wh2.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/wh3.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/images/wh4.jpg\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/index.html\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/single.html\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Template/web/w3layouts-License.txt\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/core/admin.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/core/admin.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/core/models.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/core/models.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/core/views.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/core/views.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/db.sqlite3\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/db.sqlite3\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/etravel/urls.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/etravel/urls.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/etravel/wsgi.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/etravel/wsgi.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/manage.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/manage.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/requirements.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/requirements.txt\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1keepolcF4mHMdzZFBtcBMfFmiF\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable\" />\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"0a217ef6-c325-4e07-a47d-3f90d1972fd8\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1606065669770</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1606065669770</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Chhavi\">\r\n      <created>1606067080152</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1606067080152</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Chhavi\">\r\n      <created>1606067486113</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1606067486113</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Chhavi\">\r\n      <created>1606067644710</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1606067644710</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Chhavi\">\r\n      <created>1606070981347</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1606070981347</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Chhavi\">\r\n      <created>1606071305810</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1606071305810</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Chhavi\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Chhavi\" />\r\n  </component>\r\n  <component name=\"WindowStateProjectService\">\r\n    <state x=\"420\" y=\"95\" key=\"FileChooserDialogImpl\" timestamp=\"1606065798840\">\r\n      <screen x=\"0\" y=\"0\" width=\"1280\" height=\"680\" />\r\n    </state>\r\n    <state x=\"420\" y=\"95\" key=\"FileChooserDialogImpl/0.0.1280.680@0.0.1280.680\" timestamp=\"1606065798840\" />\r\n    <state x=\"142\" y=\"0\" key=\"SettingsEditor\" timestamp=\"1606066085447\">\r\n      <screen x=\"0\" y=\"0\" width=\"1280\" height=\"680\" />\r\n    </state>\r\n    <state x=\"142\" y=\"0\" key=\"SettingsEditor/0.0.1280.680@0.0.1280.680\" timestamp=\"1606066085447\" />\r\n    <state x=\"233\" y=\"74\" key=\"Vcs.Push.Dialog.v2\" timestamp=\"1606071349589\">\r\n      <screen x=\"0\" y=\"0\" width=\"1280\" height=\"680\" />\r\n    </state>\r\n    <state x=\"233\" y=\"74\" key=\"Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680\" timestamp=\"1606071349589\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(revision d12222c5e19f3a018ea135f84e8ee3a762c94675)
++++ .idea/workspace.xml	(date 1607433731218)
+@@ -20,60 +20,7 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="0a217ef6-c325-4e07-a47d-3f90d1972fd8" name="Default Changelist" comment="Chhavi">
+-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/about.html" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/book.html" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/contact.html" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/css/bootstrap.css" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/css/css_slider.css" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/css/font-awesome.min.css" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/css/single.css" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/css/style.css" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/fonts/FontAwesome.otf" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/fonts/fontawesome-webfont.eot" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/fonts/fontawesome-webfont.svg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/fonts/fontawesome-webfont.ttf" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/fonts/fontawesome-webfont.woff" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/fonts/fontawesome-webfont.woff2" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/gallery.html" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/1.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/2.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/3.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/4.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/bg2.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/bg3.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/bg4.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/blog1.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/blog2.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/blog3.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/move-top.png" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/price1.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/price2.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/price3.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/single.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/t1.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/t2.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/t3.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/t4.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/te1.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/te2.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/te3.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/wh1.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/wh2.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/wh3.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/images/wh4.jpg" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/index.html" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/single.html" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Template/web/w3layouts-License.txt" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/core/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/admin.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/etravel/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/etravel/urls.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/etravel/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/etravel/wsgi.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -136,7 +83,21 @@
+       <option name="project" value="LOCAL" />
+       <updated>1606071305810</updated>
+     </task>
+-    <option name="localTasksCounter" value="6" />
++    <task id="LOCAL-00006" summary="Chhavi">
++      <created>1607433409993</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1607433409993</updated>
++    </task>
++    <task id="LOCAL-00007" summary="Chhavi">
++      <created>1607433473218</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1607433473218</updated>
++    </task>
++    <option name="localTasksCounter" value="8" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
